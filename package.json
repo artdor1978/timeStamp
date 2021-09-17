@@ -1,0 +1,19 @@
+{
+  "name": "fcc_timestamp",
+  "version": "1.0.0",
+  "description": "Timestamp Microservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "FCC",
+    "timestamp",
+    "api"
+  ],
+  "author": "Dorokhov A.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
