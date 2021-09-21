@@ -50,13 +50,27 @@ app.use(express.static(__dirname + "/public"));
 // 	});
 // });
 app.get("/api/timestamp/:date", function (req, res) {
-	let reqDate = new Date(req.params.date/1000).toUTCString();
+	let inputDate = new Date(req.params.date);
+	console.log("aaa", req.params.date);
+	console.table([
+		[new Date("April 13, 2017"), new Date("1492041600")],
+	]);
+	if (inputDate.toString() == "Invalid Date") {
+		inputDate = new Date(parseInt(req.params.date));
+	}
+
+	let unix = inputDate.getTime();
+	let utc = inputDate.toUTCString();
 	res.json({
-		unix: req.params.date,
-		utc: reqDate,
+		unix,
+		utc,
 	});
 });
 //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
 //https://replit.com/@jatinpatel136/boilerplate-project-timestamp
 //https://www.unixtimestamp.com/
 //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
+
+
+//new Date("April 13, 2017").getTime()-new Date("April 13, 2017").getTimezoneOffset()*60000
+//new Date(new Date().setHours(new Date().getHours()-new Date().getTimezoneOffset()/60))
