@@ -51,10 +51,7 @@ app.use(express.static(__dirname + "/public"));
 // });
 app.get("/api/timestamp/:date", function (req, res) {
 	let inputDate = new Date(req.params.date);
-	console.log("aaa", req.params.date);
-	console.table([
-		[new Date("April 13, 2017"), new Date("1492041600")],
-	]);
+	
 	if (inputDate.toString() == "Invalid Date") {
 		inputDate = new Date(parseInt(req.params.date));
 	}
@@ -78,3 +75,6 @@ app.get("/api/timestamp/:date", function (req, res) {
 
 
 //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   !!!
+
+
+//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
