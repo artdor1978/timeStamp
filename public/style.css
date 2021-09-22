@@ -1,6 +1,8 @@
 body {
 	font-family: "Quicksand", sans-serif;
 	margin:  10%;
+	background-color: #f9f9f7;
+	color: #8a8a89;
 }
 a, p {
 	font-family: 'Montserrat', sans-serif;

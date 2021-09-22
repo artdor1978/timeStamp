@@ -4,8 +4,22 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
+	resolve: {
+		fallback: {
+			fs: false,
+			tls: false,
+			net: false,
+			path: false,
+			zlib: false,
+			http: false,
+			https: false,
+			stream: false,
+			crypto: false,
+			util: false
+		},
+	},
 	entry: {
-		main: path.resolve(__dirname, "./src/index.js"),
+		main: path.resolve(__dirname, "./server.js"),
 	},
 	output: {
 		path: path.resolve(__dirname, "./dist"),
@@ -23,7 +37,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: "webpack Boilerplate",
-			template: path.resolve(__dirname, "./src/template.html"), // шаблон
+			template: path.resolve(__dirname, "./views/index.html"), // шаблон
 			filename: "index.html", // название выходного файла
 		}),
 		new CleanWebpackPlugin(),
