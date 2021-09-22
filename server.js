@@ -51,7 +51,7 @@ app.use(express.static(__dirname + "/public"));
 // });
 app.get("/api/timestamp/:date", function (req, res) {
 	let inputDate = new Date(req.params.date);
-	
+
 	if (inputDate.toString() == "Invalid Date") {
 		inputDate = new Date(parseInt(req.params.date));
 	}
@@ -63,18 +63,25 @@ app.get("/api/timestamp/:date", function (req, res) {
 		utc,
 	});
 });
+app.get("/api/whoami", function (req, res) {
+	res.json({
+		ipaddress:
+			req.headers["x-forwarded-for"] ||
+			req.connection.remoteAddress ||
+			req.socket.remoteAddress ||
+			req.connection.socket.remoteAddress,
+		language: req.headers["accept-language"],
+		software: req.header("user-agent"),
+	});
+});
 //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
 //https://replit.com/@jatinpatel136/boilerplate-project-timestamp
 //https://www.unixtimestamp.com/
 //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
 
-
 //new Date("April 13, 2017").getTime()-new Date("April 13, 2017").getTimezoneOffset()*60000
 //new Date(new Date().setHours(new Date().getHours()-new Date().getTimezoneOffset()/60))
 
-
-
 //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   !!!
-
 
 //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
