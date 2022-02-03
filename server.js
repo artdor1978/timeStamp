@@ -1,6 +1,8 @@
 const express = require("express");
 //const bodyParser = require("body-parser");
 const app = express();
+const cors = require("cors");
+app.use(cors({optionSuccessStatus: 200}));
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
