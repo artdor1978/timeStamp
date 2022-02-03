@@ -2,7 +2,7 @@ const express = require("express");
 //const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-app.use(cors({optionSuccessStatus: 200}));
+app.use(cors({ optionSuccessStatus: 200 }));
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
@@ -51,7 +51,7 @@ app.use(express.static(__dirname + "/public"));
 // 		name: `${first} ${last}`,
 // 	});
 // });
-app.get("/api/timestamp/:date", function (req, res) {
+/* app.get("/api/timestamp/:date", function (req, res) {
 	let inputDate = new Date(req.params.date);
 
 	if (inputDate.toString() == "Invalid Date") {
@@ -64,6 +64,24 @@ app.get("/api/timestamp/:date", function (req, res) {
 		unix,
 		utc,
 	});
+}); */
+app / get("/api/timestamp/:dateString?", (req, res) => {
+	const dateString = req.params.dateString;
+	let date;
+	if (!dateString) {
+		date = new Date();
+	} else {
+		if (!isNaN(dateString)) {
+			date = new Date(parseInt(dateString));
+		} else {
+			date = new Date(dateString);
+		}
+	}
+	if (date.toString() === "Invalid Date") {
+		res.json({ error: date.toString() });
+	} else {
+		res.json({ unix: date.getTime(), utc: date.toUTCString() });
+	}
 });
 app.get("/api/whoami", function (req, res) {
 	res.json({
