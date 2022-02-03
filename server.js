@@ -65,7 +65,7 @@ app.use(express.static(__dirname + "/public"));
 		utc,
 	});
 }); */
-app / get("/api/timestamp/:dateString?", (req, res) => {
+app.get("/api/timestamp/:dateString?", (req, res) => {
 	const dateString = req.params.dateString;
 	let date;
 	if (!dateString) {
